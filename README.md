@@ -21,6 +21,7 @@ The goal of this project is to simulate real-world healthcare analytics and answ
 ##
 
 🎯 Objectives
+
 🔹Analyze hospital and doctor performance
 
 🔹Understand patient demographics and trends
