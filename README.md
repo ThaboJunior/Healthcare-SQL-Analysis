@@ -59,6 +59,7 @@ This structure ensures:
 📊 Key Business Questions & Analysis
 
 💰 Revenue Analysis
+
 🔹What is the total revenue generated per hospital?
 
 🔹Which doctors generate the most revenue?
@@ -130,17 +131,6 @@ This structure ensures:
 🔹Joins, Aggregations, Grouping, Sorting
 ##
 
-
-📈 Key Insights (Example)
-
-(Replace these with your actual results after running queries)
-
-Certain hospitals generate significantly higher revenue due to higher admission rates.
-A small number of doctors contribute to a large portion of total revenue.
-Emergency admissions tend to have longer average stay durations.
-Some medical conditions consistently result in higher billing amounts.
-Middle-aged and older patients show higher admission rates.
-
 🧠 SQL Analysis
 
 🔹Total Revenue Per Hospital
@@ -175,6 +165,20 @@ ORDER BY total_patients DESC;
 
 Dr. M Smith handles the highest number of patients, indicating a significant workload concentration. This may suggest strong expertise or high demand for their specialization, but it could also highlight potential workload imbalance within the hospital.
 
+🔹High billing condition
+
+SELECT medical_condition, SUM(billing_amount) as Total_Revenue
+
+FROM admissions
+
+GROUP BY medical_condition
+
+ORDER BY Total_Revenue DESC;
+
+📈Insight:
+
+The dataset does not have enough variation to show meaningful differences between medical conditions.
+
 🔹Common Medical Condition
 
 SELECT medical_condition, COUNT(*) AS cases
@@ -186,6 +190,8 @@ GROUP BY medical_condition
 ORDER BY cases DESC;
 
 📈Insight:
+
+The dataset does not have enough variation to show meaningful differences between medical conditions.
 ##
 
 🔹Revenue Per Doctor
@@ -207,6 +213,7 @@ LIMIT 5;
 A small number of doctors contribute to a large portion of total revenue of 7 figures.
 
 🔹Admission by Age Group
+
 SELECT 
 
     CASE 
@@ -236,27 +243,83 @@ ORDER BY total_admissions DESC;
 Middle-aged and older patients show higher admission rates compared to teenagers.
 
 🔹Total admissions per Hospital
+
+SELECT h.hospital_name, COUNT(a.admission_id) as Total_Admissions
+
+FROM admissions a
+
+JOIN hospitals h ON a.hospital_id = h.hospital_id
+
+GROUP BY h.hospital_name
+
+ORDER BY Total_Admissions DESC;
+
 📈Insight:
 
+Although some hospitals handle the highest number of admissions, they are not the top revenue generators. This indicates that patient volume alone does not drive profitability, and that higher revenue is likely associated with specialized or higher-cost treatments.
+
 🔹Average Stay Per Admission type
+
+SELECT admission_type, ROUND(AVG(DATEDIFF(discharge_date, admission_date)),2) as AVG_Stay
+
+FROM admissions
+
+GROUP BY admission_type
+
+ORDER BY AVG_Stay DESC;
+
 📈Insight:
+
+Despite differences in admission types (Emergency, Urgent, Elective), the average hospital stay remains consistent at around 15 days. This suggests that admission type has minimal impact on patient stay duration, and that medical condition or treatment complexity may be the primary drivers.
 
 🔹Common insurance provider
 📈Insight:
 
-🔹Days stayed per admission type
+🔹billing amount per length of stay 
+
+SELECT 
+
+    CASE 
+    
+        WHEN DATEDIFF(discharge_date, admission_date) <= 3 THEN 'Short Stay (0-3 days)'
+        
+        WHEN DATEDIFF(discharge_date, admission_date) <= 7 THEN 'Medium Stay (4-7 days)'
+        
+        ELSE 'Long Stay (8+ days)'
+   
+    END AS stay_category,
+    
+    COUNT(*) AS total_patients,
+    
+    ROUND(AVG(billing_amount), 2) AS avg_billing
+
+FROM admissions
+
+GROUP BY stay_category
+
+ORDER BY total_patients DESC; 
+
 📈Insight:
-Although long-stay patients make up the majority of admissions, the average billing amount remains consistent across all stay durations. This suggests that hospital charges are likely driven more by treatment type rather than length of stay.
+
+Although long staying patients make up the majority of admissions, the average billing amount remains consistent across all stay durations. Interestingly, medium length stays show the highest average cost, suggesting that billing is more influenced by treatment intensity rather than duration of stay.
+
 ##
 
 🚀 What I Learned
-How to normalize raw datasets into structured relational databases
-Writing advanced SQL queries using:
-JOINS
-GROUP BY
-агрегations (SUM, COUNT, AVG, DATEDIFF)
-Translating business questions into SQL queries
-Extracting meaningful insights from data
+
+🔹How to normalize raw datasets into structured relational databases
+
+🔹Writing advanced SQL queries using:
+
+🔹JOINS
+
+🔹GROUP BY
+
+🔹агрегations (SUM, COUNT, AVG, DATEDIFF)
+
+🔹Translating business questions into SQL queries
+
+🔹Extracting meaningful insights from data
 ##
 
 📌 Conclusion
