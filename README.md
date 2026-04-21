@@ -17,7 +17,7 @@ The dataset was normalized into multiple relational tables:
 
 🔹admissions
 
-The goal of this project is to simulate real-world healthcare analytics and answer important business questions using SQL.
+The goal of this project is to simulate real world healthcare analytics and answer important business questions using SQL.
 ##
 
 🎯 Objectives
@@ -26,7 +26,7 @@ The goal of this project is to simulate real-world healthcare analytics and answ
 
 🔹Understand patient demographics and trends
 
-🔹Identify high-revenue areas
+🔹Identify high revenue areas
 
 🔹Evaluate operational efficiency (admissions, stay duration)
 
@@ -54,7 +54,7 @@ This structure ensures:
 
 🔹Better query performance
 
-🔹Real-world database design practices
+🔹Real world database design practices
 ##
 
 📊 Key Business Questions & Analysis
@@ -65,7 +65,7 @@ This structure ensures:
 
 🔹Which doctors generate the most revenue?
 
-🔹Who are the top 5 revenue-generating doctors?
+🔹Who are the top 5 revenue generating doctors?
 
 🔹Which medical conditions generate the highest revenue?
 
@@ -241,7 +241,7 @@ ORDER BY total_admissions DESC;
 
 📈Insight:
 
-Middle-aged and older patients show higher admission rates compared to teenagers.
+Middle aged and older patients show higher admission rates compared to teenagers.
 
 🔹Total admissions per Hospital
 
@@ -325,4 +325,4 @@ Although long staying patients make up the majority of admissions, the average b
 
 📌 Conclusion
 
-This project demonstrates the use of SQL in solving real-world healthcare problems by transforming raw data into actionable insights. It highlights key areas such as revenue generation, hospital efficiency, and patient trends.
+This project demonstrates the use of SQL in solving real world healthcare problems by transforming raw data into actionable insights. It highlights key areas such as revenue generation, hospital efficiency, and patient trends.
