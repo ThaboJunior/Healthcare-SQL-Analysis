@@ -1,4 +1,5 @@
 🏥 Healthcare Data Analysis Project (SQL)
+##
 
 📌 Project Overview
 
@@ -17,6 +18,7 @@ The dataset was normalized into multiple relational tables:
 🔹admissions
 
 The goal of this project is to simulate real-world healthcare analytics and answer important business questions using SQL.
+##
 
 🎯 Objectives
 🔹Analyze hospital and doctor performance
@@ -28,7 +30,7 @@ The goal of this project is to simulate real-world healthcare analytics and answ
 🔹Evaluate operational efficiency (admissions, stay duration)
 
 🔹Discover patterns in medical conditions and treatments
-
+##
 
 🗂️ Database Structure
 
@@ -52,7 +54,7 @@ This structure ensures:
 🔹Better query performance
 
 🔹Real-world database design practices
-
+##
 
 📊 Key Business Questions & Analysis
 
@@ -115,7 +117,7 @@ This structure ensures:
 🔹What is the average hospital stay per admission type?
 
 🔹Do emergency admissions lead to longer stays?
-
+##
 
 🛠️ Tools & Technologies
 
@@ -126,6 +128,7 @@ This structure ensures:
 🔹Data Cleaning & Transformation
 
 🔹Joins, Aggregations, Grouping, Sorting
+##
 
 
 📈 Key Insights (Example)
@@ -244,7 +247,7 @@ Middle-aged and older patients show higher admission rates compared to teenagers
 🔹Days stayed per admission type
 📈Insight:
 Although long-stay patients make up the majority of admissions, the average billing amount remains consistent across all stay durations. This suggests that hospital charges are likely driven more by treatment type rather than length of stay.
-
+##
 
 🚀 What I Learned
 How to normalize raw datasets into structured relational databases
@@ -254,7 +257,7 @@ GROUP BY
 агрегations (SUM, COUNT, AVG, DATEDIFF)
 Translating business questions into SQL queries
 Extracting meaningful insights from data
-
+##
 
 📌 Conclusion
 
