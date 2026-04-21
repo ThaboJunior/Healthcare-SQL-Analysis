@@ -132,7 +132,7 @@ This structure ensures:
 🔹Joins, Aggregations, Grouping, Sorting
 ##
 
-🧠 SQL Analysis
+🧠 SQL Analysis - 📈Key Insights
 
 🔹Total Revenue Per Hospital
 
@@ -148,7 +148,7 @@ ORDER BY total_revenue DESC;
 
 📈Insight: 
 
-Certain hospitals generate significantly higher revenue due to higher admission rates.
+Certain hospitals generate significantly higher revenue, not due to higher admission rates but type and cost of treatment.
 
 🔹Doctor with the most patients
 
@@ -178,7 +178,7 @@ ORDER BY Total_Revenue DESC;
 
 📈Insight:
 
-The dataset does not have enough variation to show meaningful differences between medical conditions.
+The dataset does not have enough variation to show meaningful differences between total billing per medical conditions.
 
 🔹Common Medical Condition
 
@@ -193,7 +193,7 @@ ORDER BY cases DESC;
 📈Insight:
 
 The dataset does not have enough variation to show meaningful differences between medical conditions.
-##
+
 
 🔹Revenue Per Doctor
 
@@ -273,8 +273,21 @@ ORDER BY AVG_Stay DESC;
 
 Despite differences in admission types (Emergency, Urgent, Elective), the average hospital stay remains consistent at around 15 days. This suggests that admission type has minimal impact on patient stay duration, and that medical condition or treatment complexity may be the primary drivers.
 
-🔹Common insurance provider
+🔹most revenue generating insurance provider
+
+SELECT i.provider_name, SUM(a.billing_amount) as Total_Amount
+
+FROM admissions a
+
+JOIN insurance i ON a.insurance_id = i.insurance_id
+
+GROUP BY i.provider_name
+
+ORDER BY Total_Amount DESC;
+
 📈Insight:
+The dataset may not capture real world variation in insurance billing, The analysis shows that revenue contribution from insurance providers is relatively uniform across hospitals.
+
 
 🔹billing amount per length of stay 
 
